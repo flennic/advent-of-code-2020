@@ -1,8 +1,3 @@
-/**
- * Created by Maximilian Pfundstein on 02/12/2020.
- */
-
-
 import java.io.File
 import java.io.InputStream
 

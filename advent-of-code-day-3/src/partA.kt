@@ -1,5 +1,6 @@
 import java.io.File
 import java.io.InputStream
+import java.math.BigInteger
 
 /**
  * Created by Maximilian Pfundstein on 03/12/2020.
@@ -22,7 +23,7 @@ fun main() {
             StepSize(7,1),
             StepSize(1,2))
 
-    val treeCounterResults = mutableListOf<Int>()
+    val treeCounterResults = mutableListOf<BigInteger>()
 
     stepSizes.forEach {
         treeCounterResults.add(getTreeCounter(Position(0,0), it, lineList))
@@ -45,9 +46,9 @@ data class StepSize(
         var y: Int  = 0
 )
 
-fun getTreeCounter(position: Position, stepSize: StepSize, grid: MutableList<String>) : Int {
+fun getTreeCounter(position: Position, stepSize: StepSize, grid: MutableList<String>) : BigInteger {
 
-    var counter = 0
+    var counter = 0.toBigInteger()
 
     while (position.y >= (-grid.size + 1)) {
 

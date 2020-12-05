@@ -13,3 +13,7 @@ R
 "advent-of-code-day-3/src/input.txt,1/b/1bed143f77b73032841c5c35661f95f68701f618
 Q
 !advent-of-code-day-3/src/partA.kt,3/e/3e2763dfb7a9e3f16de46ccb2be511e6251465c0
+R
+"advent-of-code-day-4/src/input.txt,4/8/48b5d2066ae98c8b88e47d0cdc1287c44b49f8e3
+Q
+!advent-of-code-day-4/src/partA.kt,8/4/844c26858688863d6152109772de10f9a254d8a4

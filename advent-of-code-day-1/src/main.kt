@@ -17,14 +17,18 @@ fun main() {
             lineList.add(lineValue)
     }}
 
-    lineList.forEach { outer ->
-        lineList.forEach { inter ->
-            lineList.forEach { inner ->
+    outerloop@ for (pinned in lineList)
+        for (inner in lineList)
+            if (pinned + inner == 2020) {
+                println("The sum of $pinned and $inner is 2020 and their product is ${pinned * inner}.")
+                break@outerloop
+            }
+
+    outerloop2@ for (outer in lineList)
+        for (inter in lineList)
+            for (inner in lineList)
                 if (outer + inter + inner == 2020) {
                     println("The sum of $outer, $inter and $inner is 2020 and their product is ${outer * inter * inner}.")
-                    return
+                    break@outerloop2
                 }
-            }
-        }
-    }
 }

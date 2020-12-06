@@ -17,17 +17,17 @@ fun main() {
         }
     }
 
-    val bsps_processed = bsps.map { bsp ->
+    val bspsProcessed = bsps.map { bsp ->
         BinarySeatPartition(bsp)
     }
 
-    val maxId = bsps_processed.map { bsp ->
+    val maxId = bspsProcessed.map { bsp ->
         bsp.seatId
     }.max()
 
     var mySeatId = 0
 
-    for (bsp in bsps_processed.sortedBy { it.seatId }) {
+    for (bsp in bspsProcessed.sortedBy { it.seatId }) {
         if (bsp.seatId == mySeatId + 2) {
             mySeatId = bsp.seatId - 1
             break
@@ -35,7 +35,7 @@ fun main() {
         mySeatId = bsp.seatId
     }
 
-    println(bsps_processed.sortedBy { it.seatId }.map { it.seatId })
+    println(bspsProcessed.sortedBy { it.seatId }.map { it.seatId })
     println(maxId)
     println(mySeatId)
 }

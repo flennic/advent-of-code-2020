@@ -1,7 +1,5 @@
-import java.awt.Color
 import java.io.File
 import java.io.InputStream
-import java.lang.Integer.parseInt
 
 /**
  * Created by Maximilian Pfundstein on 05/12/2020.

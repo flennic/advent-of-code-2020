@@ -8,8 +8,8 @@ fun main() {
 
     inputStream.bufferedReader().useLines { lines ->
 
-        var questions = mutableSetOf<Char>()
-        var questionsCounter = mutableMapOf<Char, Int>().withDefault { 0 }
+        val questions = mutableSetOf<Char>()
+        val questionsCounter = mutableMapOf<Char, Int>().withDefault { 0 }
         var individuals = 0
 
         lines.forEach { line ->

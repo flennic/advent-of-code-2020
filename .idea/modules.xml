@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/advent-of-code-2020.iml" filepath="$PROJECT_DIR$/.idea/advent-of-code-2020.iml" />
       <module fileurl="file://$PROJECT_DIR$/advent-of-code-day-1/advent-of-code-day-1.iml" filepath="$PROJECT_DIR$/advent-of-code-day-1/advent-of-code-day-1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/advent-of-code-day-10/advent-of-code-day-10.iml" filepath="$PROJECT_DIR$/advent-of-code-day-10/advent-of-code-day-10.iml" />
+      <module fileurl="file://$PROJECT_DIR$/advent-of-code-day-11/advent-of-code-day-11.iml" filepath="$PROJECT_DIR$/advent-of-code-day-11/advent-of-code-day-11.iml" />
       <module fileurl="file://$PROJECT_DIR$/advent-of-code-day-2/advent-of-code-day-2.iml" filepath="$PROJECT_DIR$/advent-of-code-day-2/advent-of-code-day-2.iml" />
       <module fileurl="file://$PROJECT_DIR$/advent-of-code-day-3/advent-of-code-day-3.iml" filepath="$PROJECT_DIR$/advent-of-code-day-3/advent-of-code-day-3.iml" />
       <module fileurl="file://$PROJECT_DIR$/advent-of-code-day-4/advent-of-code-day-4.iml" filepath="$PROJECT_DIR$/advent-of-code-day-4/advent-of-code-day-4.iml" />

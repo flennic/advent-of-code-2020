@@ -17,14 +17,14 @@ fun main() {
     cruise.drive()
     print(cruise)
 
-    val cruise2 = ShipCruise2(content)
+    val cruise2 = ShipCruiseCorrect(content)
     cruise2.drive()
     print(cruise2)
 }
 
-class ShipCruise() {
+open class ShipCruise() {
 
-    private var location = Location(Position(0, 0), CardinalDirection.EAST)
+    protected open var location = Location(Position(0, 0), CardinalDirection.EAST)
     private var cruiseInstructions: List<Action> = mutableListOf()
 
     constructor(input: List<String>) : this() {
@@ -46,11 +46,11 @@ class ShipCruise() {
         return representation.toString()
     }
 
-    private fun getManhattanDistance(): Int {
+    protected open fun getManhattanDistance(): Int {
         return abs(this.location.Position.X) + abs(this.location.Position.Y)
     }
 
-    private fun executeAction(action: Action) {
+    protected open fun executeAction(action: Action) {
         when (action.ActionType) {
             ActionType.NORTH -> this.location.Position.Y += action.Value
             ActionType.EAST -> this.location.Position.X += action.Value
@@ -62,7 +62,7 @@ class ShipCruise() {
         }
     }
 
-    private fun setCardinalDirectionAfterTurn(action: Action) {
+    protected open fun setCardinalDirectionAfterTurn(action: Action) {
 
         // N = 0, E = 1, S = 2, W = 3
         val currentAlignment = this.location.CardinalDirection.ordinal
@@ -80,7 +80,7 @@ class ShipCruise() {
         }
     }
 
-    private fun setPositionAfterMoveForward(value: Int) {
+    protected open fun setPositionAfterMoveForward(value: Int) {
         when (this.location.CardinalDirection) {
             CardinalDirection.NORTH -> this.location.Position.Y += value
             CardinalDirection.EAST -> this.location.Position.X += value
@@ -111,41 +111,26 @@ class ShipCruise() {
 }
 
 
-class ShipCruise2() {
+class ShipCruiseCorrect (input: List<String>) : ShipCruise(input) {
 
     private var relativeWaypoint = Position(0, 0)
     private val initialWaypointOffset = Position(10, 1)
-    private var location = Position(0, 0)
-    private var cruiseInstructions: List<Action> = mutableListOf()
 
-    constructor(input: List<String>) : this() {
-        cruiseInstructions = input.map { inputToAction(it) }
+    init {
         relativeWaypoint = initialWaypointOffset
-    }
-
-    fun drive() {
-        print(this.toString())
-        this.cruiseInstructions.forEach { ci ->
-            executeAction(ci)
-            print(this.toString())
-        }
     }
 
     override fun toString(): String {
         val representation = StringBuilder()
 
-        representation.append("Location: ( ${this.location.X} | ${this.location.Y} )\n")
+        representation.append("Location: ( ${this.location.Position.X} | ${this.location.Position.Y} )\n")
         representation.append("Waypoint: ( ${this.relativeWaypoint.X} | ${this.relativeWaypoint.Y} )\n")
         representation.append("Manhattan Distance: ${this.getManhattanDistance()}\n\n")
 
         return representation.toString()
     }
 
-    private fun getManhattanDistance(): Int {
-        return abs(this.location.X) + abs(this.location.Y)
-    }
-
-    private fun executeAction(action: Action) {
+    override fun executeAction(action: Action) {
         when (action.ActionType) {
             ActionType.NORTH -> this.relativeWaypoint.Y += action.Value
             ActionType.EAST -> this.relativeWaypoint.X += action.Value
@@ -192,28 +177,7 @@ class ShipCruise2() {
     }
 
     private fun moveToWaypoint(action: Action) {
-        this.location = Position(this.location.X + action.Value * this.relativeWaypoint.X, this.location.Y + action.Value * this.relativeWaypoint.Y)
-    }
-
-    private fun inputToAction(inputInstruction: String): Action {
-        val actionTypeAsChar = inputInstruction[0]
-        val actionValueAsString = inputInstruction.drop(1)
-
-        val actionValue = actionValueAsString.toInt()
-
-        return when (actionTypeAsChar) {
-            'N' -> Action(ActionType.NORTH, actionValue)
-            'E' -> Action(ActionType.EAST, actionValue)
-            'S' -> Action(ActionType.SOUTH, actionValue)
-            'W' -> Action(ActionType.WEST, actionValue)
-            'L' -> Action(ActionType.TURN_LEFT, actionValue)
-            'R' -> Action(ActionType.TURN_RIGHT, actionValue)
-            'F' -> Action(ActionType.MOVE_FORWARD, actionValue)
-            else -> {
-                throw IllegalArgumentException()
-
-            }
-        }
+        this.location.Position = Position(this.location.Position.X + action.Value * this.relativeWaypoint.X, this.location.Position.Y + action.Value * this.relativeWaypoint.Y)
     }
 }
 

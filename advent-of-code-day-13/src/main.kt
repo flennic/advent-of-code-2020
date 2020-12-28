@@ -13,9 +13,11 @@ fun main() {
     }
 
     val departureService = DepartureService(content)
+    println(departureService)
     println(departureService.getResult())
 
     val goldCoinService = GoldCoinService(content)
+    println(goldCoinService)
     println(goldCoinService.getTimestamp())
 }
 
@@ -112,7 +114,7 @@ class GoldCoinService {
             while ((t + offset[i]).mod(bus[i]) != BigInteger.ZERO) {
                 val collection = bus.take(i)
                 if (collection.isNotEmpty())
-                    t += collection.reduce { a, b ->  a*b}
+                    t += collection.reduce { a, b ->  a * b }
             }
         }
 
@@ -172,6 +174,8 @@ class GoldCoinService {
         return value.mod(modulo) == baseValue
     }
 
+    // Sieve method found on Wikipedia. Is too slow for some reason...
+    // It seems that it is sufficiently fast enough for others...
     fun getTimestamp3(): BigInteger {
 
         var stepSize = BigInteger.ONE
@@ -180,7 +184,7 @@ class GoldCoinService {
         for (i in 0 until (this.reqList.size - 1)) {
             println("Iteration $i")
             stepSize *= this.reqList[i].bus
-            val seqGen = sequenceArithmeticProgression(x, stepSize)//.iterator()
+            val seqGen = sequenceArithmeticProgression(x, stepSize)
 
             for (congruent in seqGen) {
                 if (isCongruentTo(congruent, this.reqList[i + 1].offset, this.reqList[i + 1].bus)) {
